@@ -30,7 +30,7 @@ public class blackjack
                 
         while(true)
         {  
-          cardNum = Cards.get(count);
+        	cardNum = Cards.get(count);
         	Cards.remove(count);            
             type = type (cardNum);  
             count++;
@@ -69,15 +69,10 @@ public class blackjack
         	P2sum = Player2sum(cardNum);  
         	
         	if(call.equals("stay") && call2.equals("stay"))
-        	{        		
-        		
+        	{        		        		
         		Result(Player1, P2sum, P1sum);
         		break;
-        	}
-        	else if(call.equals("stay") && !call2.equals("stay"))
-        	{
-        		
-        	}
+        	}        	
         }   
     }   
     
@@ -138,14 +133,12 @@ public class blackjack
     	else
     	{    		
     		System.out.println(Player1 +": " + div + " of " + type);
-    	}    	
-    	
-    }
-    
+    	}    	    	
+    }    
     
     public static void Result(String Player1, int P2sum, int P1sum)
     {      	
-    	if(P1sum > 21 || P2sum == 21 || P2sum > P1sum)
+    	if(P1sum > 21 || P2sum == 21)
     	{
     		System.out.println("Computer has won the game.");
     		System.out.println("Computer:" + P2sum);
@@ -156,6 +149,12 @@ public class blackjack
     		System.out.println(Player1 + " has won the game.");
     		System.out.println("Computer:" + P2sum);
     		System.out.println(Player1 + ": " + P1sum);   
+    	}
+    	else if(P2sum > P1sum && P2sum < 21 )
+    	{
+    		System.out.println("Computer has won the game.");
+    		System.out.println("Computer:" + P2sum);
+    		System.out.println(Player1 + ": " + P1sum);    		
     	}
     	else if(P1sum > 21 && P1sum > P2sum )
     	{
@@ -218,8 +217,7 @@ public class blackjack
     	
     	return cards;    	   	
     }
-    
-    
+        
     public static String type (int num)
     {
         int cardNum = (int) num / 13;
